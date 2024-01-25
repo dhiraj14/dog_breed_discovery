@@ -1,7 +1,19 @@
-<%= form_tag(fetch_image_dogs_path(format: :json), method: "post", local: true, data: { turbo: false, controller: "dogs",  dogs_target: "form", action: "submit->dogs#submitForm" }) do %>
-  <%= label_tag(:breed, "Breed") %>
-  <%= text_field_tag(:breed, nil, data: {dogs_target: 'breed'}) %>
-  <%= submit_tag("Submit") %>
-  <div data-dogs-target="image"></div>
-<% end %>
+<div class="flex" data-controller="dogs">
+  <div class="w-1/2">
+    <%= form_tag(fetch_image_dogs_path(format: :json), method: "post", local: true, data: { turbo: false,  dogs_target: "form", action: "submit->dogs#submitForm" }) do %>
+      <div class="mb-4">
+        <%= label_tag(:breed, "Breed", class: "block text-gray-700 text-sm font-bold mb-2") %>
+        <%= text_field_tag(:breed, nil, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", data: {dogs_target: 'breed'}) %>
+      </div>
 
+      <%= submit_tag("Submit", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") %>
+      
+      <div id="error_message" data-dogs-target="errorMessage" class="hidden mt-4 p-4 border border-red-400 text-red-700 bg-red-100 rounded-lg"></div>
+    <% end %>
+  </div>
+
+  <div class="w-1/2 flex justify-center items-center">
+    <div data-dogs-target="image" class="w-full">
+    </div>
+  </div>
+</div>
