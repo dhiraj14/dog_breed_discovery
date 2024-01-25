@@ -1,19 +1,22 @@
-<div class="flex" data-controller="dogs">
-  <div class="w-1/2">
+<div class="flex min-h-screen" data-controller="dogs">
+  <div class="w-1/2 flex items-center justify-center p-6">
     <%= form_tag(dog_image_show_path(format: :json), local: true, data: { turbo: false,  dogs_target: "form", action: "submit->dogs#submitForm" }) do %>
-      <div class="mb-4">
-        <%= label_tag(:breed, "Breed", class: "block text-gray-700 text-sm font-bold mb-2") %>
-        <%= text_field_tag(:breed, nil, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", data: {dogs_target: 'breed'}) %>
-      </div>
+      <div class="w-full max-w-xs">
+        <div class="mb-4">
+          <%= label_tag(:breed, "Breed", class: "block text-gray-700 text-sm font-bold mb-2") %>
+          <%= text_field_tag(:breed, nil, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", data: {dogs_target: 'breed'}) %>
+        </div>
 
-      <%= submit_tag("Submit", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") %>
-      
-      <div id="error_message" data-dogs-target="errorMessage" class="hidden mt-4 p-4 border border-red-400 text-red-700 bg-red-100 rounded-lg"></div>
+        <%= submit_tag("Submit", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full") %>
+
+        <div id="error_message" data-dogs-target="errorMessage" class="hidden mt-4 p-4 border border-red-400 text-red-700 bg-red-100 rounded-lg"></div>
+      </div>
     <% end %>
   </div>
 
-  <div class="w-1/2 flex justify-center items-center">
-    <div data-dogs-target="image" class="w-full">
+  <div class="w-1/2 flex flex-col items-center justify-center p-6">
+    <h3 data-dogs-target="breedName" class="text-xl font-semibold mb-4"></h3>
+    <div data-dogs-target="image" class="w-full h-full">
     </div>
   </div>
 </div>
