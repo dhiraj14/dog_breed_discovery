@@ -1,7 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Dogs", type: :request do
+RSpec.describe "DogsController", type: :request do
   describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+    it 'renders the root page' do
+      get "/"
+      expect(response).to have_http_status(:ok)
+    end
   end
 end

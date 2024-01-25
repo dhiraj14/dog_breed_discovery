@@ -11,7 +11,7 @@ class DogImageController < ApplicationController
   private
 
   def breed_param
-    params[:breed].downcase
+    params[:breed]&.downcase  
   end
 
   def validate_breed_param
