@@ -5,16 +5,16 @@ export default class extends Controller {
 
   submitForm(event) {
     event.preventDefault();
-    const url = this.formTarget.action;
+    const action = this.formTarget.action;
     const breed = this.breedTarget.value;
+    const url =  `${action}?breed=${encodeURIComponent(breed)}`;
     this.errorMessageTarget.classList.add('hidden'); // Hide error message initially
 
     fetch(url, {
-      method: 'POST',
+      method: 'GET',
       headers: { 
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ breed })
     })
     .then(response => response.json())
     .then(data => {

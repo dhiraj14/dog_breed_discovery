@@ -7,9 +7,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "dogs#index"
-  resources :dogs, only: [:index] do 
-    collection do
-      post :fetch_image
-    end
-  end
+  get 'dog_image', to: 'dog_image#show', as: 'dog_image_show'
 end
