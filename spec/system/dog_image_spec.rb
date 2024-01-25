@@ -4,10 +4,6 @@ RSpec.describe 'Dog image fetching', type: :system, js: true do
   let(:breed) { 'bulldog' }
   let(:image_url) { 'https://images.dog.ceo/breeds/bulldog/n02101006_1016.jpg' }
 
-  before do
-    driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
-  end
-
   it 'displays an image of the specified breed' do
     stub_request(:get, "https://dog.ceo/api/breed/#{breed}/images/random")
       .to_return(status: 200, body: { status: 'success', message: image_url }.to_json)
